@@ -125,6 +125,9 @@ payload = {
 - anime
 - game_asset
 - portrait
+- texture
+- ui
+- spritesheet
 - no_style
 
 ## Using img2img
