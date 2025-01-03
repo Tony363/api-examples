@@ -131,15 +131,27 @@ payload = {
 - no_style
 
 ## Using img2img
-- For now, only `RD_CLASSIC` supports img2img
-- Just send a **base64** image in the `image` parameter and adjust `strength` to your liking:
+- For now, only `RD_CLASSIC` and `RD_FLUX` supports img2img
+- Just send a **base64** image in the `input_image` parameter and adjust `strength` to your liking:
 ```python
 payload = {
+    "prompt": "A really cool corgi wearing sunglasses and a party hat",
     "model": "RD_CLASSIC",
     "width": 64,
     "height": 64,
-    "image": "BASE64_IMAGE",
+    "input_image": "BASE64_IMAGE",
     "strength": 0.5
+}
+```
+
+```python
+payload = {
+    "prompt": "A really cool corgi wearing sunglasses and a party hat",
+    "model": "RD_FLUX",
+    "width": 256,
+    "height": 256,
+    "input_image": "BASE64_IMAGE",
+    "strength": 0.8
 }
 ```
 
