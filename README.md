@@ -133,24 +133,33 @@ payload = {
 ## Using img2img
 - For now, only `RD_CLASSIC` and `RD_FLUX` supports img2img
 - Just send a **base64** image in the `input_image` parameter and adjust `strength` to your liking:
+- No need to include `data:image/png;base64,` in the base64 image or similar stuff.
+- Send your image as a base64 string, it should be a RGB image with no transparency.
+
 ```python
+with Image.open(input_image_path) as img:
+    rgb_img = img.convert('RGB')
+    buffer = BytesIO()
+    rgb_img.save(buffer, format='PNG')
+    base64_input_image = base64.b64encode(buffer.getvalue()).decode('utf-8')
+
+# RD_CLASSIC img2img
 payload = {
     "prompt": "A really cool corgi wearing sunglasses and a party hat",
     "model": "RD_CLASSIC",
     "width": 64,
     "height": 64,
-    "input_image": "BASE64_IMAGE",
+    "input_image": base64_input_image,
     "strength": 0.5
 }
-```
 
-```python
+# RD_FLUX img2img
 payload = {
     "prompt": "A really cool corgi wearing sunglasses and a party hat",
     "model": "RD_FLUX",
     "width": 256,
     "height": 256,
-    "input_image": "BASE64_IMAGE",
+    "input_image": base64_input_image,
     "strength": 0.8
 }
 ```
