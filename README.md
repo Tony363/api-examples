@@ -128,6 +128,8 @@ payload = {
 - texture
 - ui
 - spritesheet
+- mc_texture
+- mc_item
 - no_style
 
 ## Using img2img
