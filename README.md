@@ -130,6 +130,7 @@ payload = {
 - spritesheet
 - mc_texture
 - mc_item
+- character_turnaround
 - no_style
 
 ## Using img2img
