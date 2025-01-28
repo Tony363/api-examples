@@ -127,7 +127,7 @@ payload = {
 - portrait
 - texture
 - ui
-- spritesheet
+- item_sheet
 - mc_texture
 - mc_item
 - character_turnaround
