@@ -134,6 +134,7 @@ payload = {
 #### Available styles:
 
 - default
+- retro
 - simple
 - detailed
 - anime
