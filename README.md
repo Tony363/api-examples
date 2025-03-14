@@ -147,7 +147,33 @@ payload = {
 - mc_item
 - character_turnaround
 - 1_bit
+- animation_four_angle_walking
 - no_style
+
+## Animations
+
+We now support animations using the `animation_four_angle_walking` style.
+
+Some important notes:
+
+- Animations are only supported in `RD_FLUX` model.
+- Animations currently only support 48x48 resolution. (Bigger or smaller resolutions will be ignored and default to 48x48)
+- Animations only support generating one image at a time.
+- Outputs are 48x48 transparent GIF images also encoded in base64.
+
+Example payload:
+
+```python
+{
+	"prompt": "corgi wearing a party hat",
+	"width": 48,
+	"height": 48,
+	"model": "RD_FLUX",
+	"num_images": 1,
+	"seed": 123,
+	"prompt_style": "animation_four_angle_walking"
+}
+```
 
 ## Using img2img
 
