@@ -119,6 +119,8 @@ Some important notes:
 
 Example payload:
 
+> This payload will generate a 48x48 transparent GIF, if you want the spritesheet, look below
+
 ```python
 {
 	"prompt": "corgi wearing a party hat",
@@ -128,6 +130,23 @@ Example payload:
 	"num_images": 1,
 	"seed": 123,
 	"prompt_style": "animation_four_angle_walking"
+}
+```
+
+Spritesheet output payload:
+
+> Just add the **return_spritesheet** property set to `true`, this will output a transparent PNG with the spritesheet
+
+```python
+{
+	"prompt": "corgi wearing a party hat",
+	"width": 48,
+	"height": 48,
+	"model": "RD_FLUX",
+	"num_images": 1,
+	"seed": 123,
+	"prompt_style": "animation_four_angle_walking",
+	"return_spritesheet": true
 }
 ```
 
