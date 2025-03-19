@@ -150,11 +150,33 @@ Spritesheet output payload:
 }
 ```
 
+### Image reference for animations
+
+You can use the parameter `input_image` in your payload to let the model know what image to use as a reference.
+The `input_image` should be a base64 encoded RGB image with no transparency.
+In your prompt you can include a brief description of your reference image.
+
+**Don't** include the `data:image/png;base64,` in the base64 image.
+
+```python
+{
+	"prompt": "robot",
+	"width": 48,
+	"height": 48,
+	"model": "RD_FLUX",
+	"num_images": 1,
+	"seed": 1234,
+	"prompt_style": "animation_four_angle_walking",
+	"return_spritesheet": true,
+	"input_image": "iVBORw0KGgoAAAANSUhEUgAAAUA... ... ..."
+}
+```
+
 ## Using img2img
 
 - For now, only `RD_FLUX` supports img2img
 - Just send a **base64** image in the `input_image` parameter and adjust `strength` to your liking:
-- No need to include `data:image/png;base64,` in the base64 image or similar stuff.
+- No need to include `data:image/png;base64,` in the base64 image.
 - Send your image as a base64 string, it should be a RGB image with no transparency.
 
 ```python
