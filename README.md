@@ -197,7 +197,7 @@ payload = {
 }
 ```
 
-## Usinge seamless tiling
+## Using seamless tiling
 
 - All `RD_FLUX` styles support tiling
 - Simply add `tile_x` and `tile_y` both as booleans
