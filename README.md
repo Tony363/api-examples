@@ -197,6 +197,22 @@ payload = {
 }
 ```
 
+## Usinge seamless tiling
+
+- All `RD_FLUX` styles support tiling
+- Simply add `tile_x` and `tile_y` both as booleans
+
+```python
+payload = {
+    "prompt": "Stone bricks",
+    "model": "RD_FLUX",
+    "width": 128,
+    "height": 128,
+    "tile_x": true,
+    "tile_y": true
+}
+```
+
 ## FAQ
 
 - **How much does it cost?**
