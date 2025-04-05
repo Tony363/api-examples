@@ -197,6 +197,20 @@ payload = {
 }
 ```
 
+## Using background removal for transparent images
+
+- Simply `remove_bg` as a boolean
+
+```python
+payload = {
+    "prompt": "a raven with a glowing green eye",
+    "model": "RD_FLUX",
+    "width": 128,
+    "height": 128,
+    "remove_bg": True
+}
+```
+
 ## Using seamless tiling
 
 - All `RD_FLUX` styles support tiling
