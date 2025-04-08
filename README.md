@@ -252,7 +252,14 @@ payload = {
 - **How much does it cost?**
   - Cost is calculated based on the model and resolution you choose. You can check the cost of each request in our [web app](https://www.retrodiffusion.ai/)
 - **How can I check my remaining credits?**
-  - You can check your remaining credits in our [web app](https://www.retrodiffusion.ai/)
+  - You can make a GET request to the `/v1/inferences/credits` endpoint, with the header `X-RD-Token` set to your API key. The response will include the remaining credits in the following format:
+
+```json
+{
+  "credits": 999
+}
+```
+
 - **Can I buy credits from the API?**
   - No, but to ensure you always have enough credits for your requests, you can set up **auto refills** in the [Payment Methods section](https://www.retrodiffusion.ai/app/payment-methods)
 - **What happened to RD_CLASSIC?**
