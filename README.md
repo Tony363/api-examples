@@ -197,6 +197,26 @@ payload = {
 }
 ```
 
+## Using a palette for reference
+
+- You can use the `input_palette` parameter to let the model know what palette to use as a reference.
+- Just send a **base64** image in the `input_palette` parameter.
+- The `input_palette` should be a base64 encoded image with no transparency.
+- Keep your palette image small, below 1mb is recommended 200k characters or less.
+- No need to include `data:image/png;base64,` in the base64 image.
+
+```python
+{
+  "prompt": "orange robot",
+  "width": 256,
+  "height": 256,
+  "model": "RD_FLUX",
+  "num_images": 1,
+  "seed": 1234,
+  "input_palette": "iVBORw0KGgoAAAANSUhEUgAAAUA... ... ..."
+}
+```
+
 ## FAQ
 
 - **How much does it cost?**
@@ -207,3 +227,5 @@ payload = {
   - No, but to ensure you always have enough credits for your requests, you can set up **auto refills** in the [Payment Methods section](https://www.retrodiffusion.ai/app/payment-methods)
 - **What happened to RD_CLASSIC?**
   - We just dropped support for RD_CLASSIC in the future, please use RD_FLUX instead.
+- **How to get images at native resolution?**
+  - You can use the `upscale_output_factor` parameter to get images at native resolution. Set it to 1 for native resolution, or `null` for regular size.
