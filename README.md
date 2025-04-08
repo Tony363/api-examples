@@ -207,13 +207,43 @@ payload = {
 
 ```python
 {
-  "prompt": "orange robot",
+  "prompt": "a raven with a glowing green eye",
   "width": 256,
   "height": 256,
   "model": "RD_FLUX",
   "num_images": 1,
   "seed": 1234,
   "input_palette": "iVBORw0KGgoAAAANSUhEUgAAAUA... ... ..."
+}
+```
+
+## Using background removal for transparent images
+
+- Simply `remove_bg` as a boolean
+
+```python
+payload = {
+    "prompt": "a raven with a glowing green eye",
+    "model": "RD_FLUX",
+    "width": 128,
+    "height": 128,
+    "remove_bg": True
+}
+```
+
+## Using seamless tiling
+
+- All `RD_FLUX` styles support tiling
+- Simply add `tile_x` and `tile_y` both as booleans
+
+```python
+payload = {
+    "prompt": "Stone bricks",
+    "model": "RD_FLUX",
+    "width": 128,
+    "height": 128,
+    "tile_x": true,
+    "tile_y": true
 }
 ```
 
