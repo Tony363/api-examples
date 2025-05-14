@@ -175,7 +175,7 @@ In your prompt you can include a brief description of your reference image.
 ## Using img2img
 
 - For now, only `RD_FLUX` supports img2img
-- Just send a **base64** image in the `input_image` parameter and adjust `strength` to your liking:
+- Just send a **base64** image in the `input_image` parameter and adjust `strength` to your likinng. Strength is a value between 0 and 1 and represents how much the image should be modified.
 - No need to include `data:image/png;base64,` in the base64 image.
 - Send your image as a base64 string, it should be a RGB image with no transparency.
 
