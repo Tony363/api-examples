@@ -7,7 +7,7 @@
 1. First you need to generate an API Key directly from your [RetroDiffusion account](https://www.retrodiffusion.ai/app/devtools)
 2. Make sure you have available credits in your account
    Take in mind that each model supports different styles.
-3. Prepare your request, in this example we will use Python and make simple request to generate one image with RD_FLUX model and no styles:
+3. Prepare your request, in this example we will use Python and make simple request to generate one image with RD_FAST model and no styles:
 
 ```python
 import requests
@@ -20,7 +20,6 @@ headers = {
 }
 
 payload = {
-    "model": "RD_FLUX",
     "width": 256,
     "height": 256,
     "prompt": "A really cool corgi",
@@ -38,47 +37,19 @@ print(response.text)
   "created_at": 1733425519,
   "credit_cost": 1,
   "base64_images": ["..."],
-  "model": "RDModel.RD_FLUX",
   "type": "txt2img",
   "remaining_credits": 999
 }
 ```
 
-## Using RD_FLUX
-
-1. Based on the example above, we only need to adjust the model to `RD_FLUX`:
-
-```python
-import requests
-
-url = "https://api.retrodiffusion.ai/v1/inferences"
-method = "POST"
-
-headers = {
-    "X-RD-Token": "YOUR_API_KEY",
-}
-
-payload = {
-    "model": "RD_FLUX",
-    "width": 256,
-    "height": 256,
-    "prompt": "A really cool corgi wearing sunglasses and a party hat",
-    "num_images": 1
-}
-
-response = requests.request(method, url, headers=headers, json=payload)
-print(response.text)
-```
-
 ## Using styles
 
-### RD_FLUX
+### RD_FAST
 
-- `RD_FLUX` only support one style at a time, and it's passed as a parameter named `prompt_style`:
+- `RD_FAST` only support one style at a time, and it's passed as a parameter named `prompt_style`:
 
 ```python
 payload = {
-    "model": "RD_FLUX",
     "width": 256,
     "height": 256,
     "prompt": "A really cool corgi wearing sunglasses and a party hat",
@@ -106,13 +77,28 @@ payload = {
 - animation_four_angle_walking
 - no_style
 
+### RD_PLUS
+- `RD_PLUS` supports multiple styles at once, and they are passed as a list in the `prompt_style` parameter:
+
+#### Available styles:
+- rd_plus__default
+- rd_plus__retro
+- rd_plus__watercolor
+- rd_plus__textured
+- rd_plus__cartoon
+- rd_plus__ui_element
+- rd_plus__item_sheet
+- rd_plus__character_turnaround
+- rd_plus__topdown_map
+- rd_plus__topdown_asset
+- rd_plus__isometric
+
 ## Animations
 
 We now support animations using the `animation_four_angle_walking` style.
 
 Some important notes:
 
-- Animations are only supported in `RD_FLUX` model.
 - Animations currently only support 48x48 resolution. (Bigger or smaller resolutions will be ignored and default to 48x48)
 - Animations only support generating one image at a time.
 - Outputs are 48x48 transparent GIF images also encoded in base64.
@@ -126,7 +112,6 @@ Example payload:
 	"prompt": "corgi wearing a party hat",
 	"width": 48,
 	"height": 48,
-	"model": "RD_FLUX",
 	"num_images": 1,
 	"seed": 123,
 	"prompt_style": "animation_four_angle_walking"
@@ -142,7 +127,6 @@ Spritesheet output payload:
 	"prompt": "corgi wearing a party hat",
 	"width": 48,
 	"height": 48,
-	"model": "RD_FLUX",
 	"num_images": 1,
 	"seed": 123,
 	"prompt_style": "animation_four_angle_walking",
@@ -163,7 +147,6 @@ In your prompt you can include a brief description of your reference image.
 	"prompt": "robot",
 	"width": 48,
 	"height": 48,
-	"model": "RD_FLUX",
 	"num_images": 1,
 	"seed": 1234,
 	"prompt_style": "animation_four_angle_walking",
@@ -174,7 +157,6 @@ In your prompt you can include a brief description of your reference image.
 
 ## Using img2img
 
-- For now, only `RD_FLUX` supports img2img
 - Just send a **base64** image in the `input_image` parameter and adjust `strength` to your likinng. Strength is a value between 0 and 1 and represents how much the image should be modified.
 - No need to include `data:image/png;base64,` in the base64 image.
 - Send your image as a base64 string, it should be a RGB image with no transparency.
@@ -186,10 +168,8 @@ with Image.open(input_image_path) as img:
     rgb_img.save(buffer, format='PNG')
     base64_input_image = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
-# RD_FLUX img2img
 payload = {
     "prompt": "A really cool corgi wearing sunglasses and a party hat",
-    "model": "RD_FLUX",
     "width": 256,
     "height": 256,
     "input_image": base64_input_image,
@@ -210,7 +190,6 @@ payload = {
   "prompt": "a raven with a glowing green eye",
   "width": 256,
   "height": 256,
-  "model": "RD_FLUX",
   "num_images": 1,
   "seed": 1234,
   "input_palette": "iVBORw0KGgoAAAANSUhEUgAAAUA... ... ..."
@@ -224,7 +203,6 @@ payload = {
 ```python
 payload = {
     "prompt": "a raven with a glowing green eye",
-    "model": "RD_FLUX",
     "width": 128,
     "height": 128,
     "remove_bg": True
@@ -233,13 +211,11 @@ payload = {
 
 ## Using seamless tiling
 
-- All `RD_FLUX` styles support tiling
 - Simply add `tile_x` and `tile_y` both as booleans
 
 ```python
 payload = {
     "prompt": "Stone bricks",
-    "model": "RD_FLUX",
     "width": 128,
     "height": 128,
     "tile_x": true,
@@ -263,6 +239,10 @@ payload = {
 - **Can I buy credits from the API?**
   - No, but to ensure you always have enough credits for your requests, you can set up **auto refills** in the [Payment Methods section](https://www.retrodiffusion.ai/app/payment-methods)
 - **What happened to RD_CLASSIC?**
-  - We just dropped support for RD_CLASSIC in the future, please use RD_FLUX instead.
+  - We just dropped support for RD_CLASSIC
+- **What happened to RD_FLUX?**
+  - We just renamed RD_FLUX to RD_FAST, so you can use it as before.
+- **What happened to the model parameter**
+  - `model` is no longer required, as the model is determined by the `prompt_style` parameter.
 - **How to get images at native resolution?**
   - You can use the `upscale_output_factor` parameter to get images at native resolution. Set it to 1 for native resolution, or `null` for regular size.
