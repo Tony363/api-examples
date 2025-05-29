@@ -96,7 +96,7 @@ payload = {
 
 ## Animations
 
-We now support animations using the `animation:four_angle_walking` style.
+We now support animations using the `animation__four_angle_walking` style.
 
 Some important notes:
 
@@ -115,7 +115,7 @@ Example payload:
 	"height": 48,
 	"num_images": 1,
 	"seed": 123,
-	"prompt_style": "animation:four_angle_walking"
+	"prompt_style": "animation__four_angle_walking"
 }
 ```
 
