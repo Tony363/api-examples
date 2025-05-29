@@ -78,8 +78,7 @@ payload = {
 
 ### RD_PLUS
 - `RD_PLUS` supports several styles, and it's passed as a parameter named `prompt_style`:
-- `RD_PLUS` is more expensive than `RD_FAST`, please confirm the cost in our [web app](https://www.retrodiffusion.ai/) selecting the model and style and settings you want to use.
-```python 
+- `RD_PLUS` is more expensive than `RD_FAST`, please confirm the cost in our [web app](https://www.retrodiffusion.ai) selecting the model and style and settings you want to use.
 
 #### Available styles:
 - rd_plus__default
