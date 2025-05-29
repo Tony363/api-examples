@@ -60,25 +60,26 @@ payload = {
 
 #### Available styles:
 
-- default
-- retro
-- simple
-- detailed
-- anime
-- game_asset
-- portrait
-- texture
-- ui
-- item_sheet
-- mc_texture
-- mc_item
-- character_turnaround
-- 1_bit
-- animation_four_angle_walking
-- no_style
+- rd_fast__default
+- rd_fast__retro
+- rd_fast__simple
+- rd_fast__detailed
+- rd_fast__anime
+- rd_fast__game_asset
+- rd_fast__portrait
+- rd_fast__texture
+- rd_fast__ui
+- rd_fast__item_sheet
+- rd_fast__mc_texture
+- rd_fast__mc_item
+- rd_fast__character_turnaround
+- rd_fast__1_bit
+- rd_fast__no_style
 
 ### RD_PLUS
-- `RD_PLUS` supports multiple styles at once, and they are passed as a list in the `prompt_style` parameter:
+- `RD_PLUS` supports several styles, and it's passed as a parameter named `prompt_style`:
+- `RD_PLUS` is more expensive than `RD_FAST`, please confirm the cost in our [web app](https://www.retrodiffusion.ai/) selecting the model and style and settings you want to use.
+```python 
 
 #### Available styles:
 - rd_plus__default
@@ -95,7 +96,7 @@ payload = {
 
 ## Animations
 
-We now support animations using the `animation_four_angle_walking` style.
+We now support animations using the `animation:four_angle_walking` style.
 
 Some important notes:
 
@@ -114,7 +115,7 @@ Example payload:
 	"height": 48,
 	"num_images": 1,
 	"seed": 123,
-	"prompt_style": "animation_four_angle_walking"
+	"prompt_style": "animation:four_angle_walking"
 }
 ```
 
