@@ -2,6 +2,12 @@
   <img src="resources/wordmark.png" style="display: block; margin-left: auto; margin-right: auto; max-width: 50%;" />
 </p>
 
+> **ℹ️ Info:**  
+> We just migrated to a new server infrastructure!  
+> All current workflows should continue to work with the existing endpoint and no changes are needed from you.  
+> If you experience any issues, you can temporarily use our legacy endpoint at `https://api.retrodiffusion.ai/v1/inferences/legacy`.
+
+
 ## How to generate images
 
 1. First you need to generate an API Key directly from your [RetroDiffusion account](https://www.retrodiffusion.ai/app/devtools)
